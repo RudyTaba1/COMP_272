@@ -1,3 +1,4 @@
 #mass files to ignore
 *.class*
+*.txt*
 #will add more individual files later
