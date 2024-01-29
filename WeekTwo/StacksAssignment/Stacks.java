@@ -2,7 +2,7 @@ package WeekTwo.StacksAssignment;
 import java.util.Stack;
 
 ////////////////////////////////////////////
-// ADD YOUR NAME / SECTION NUMBER HERE    //
+// Rudy Tabachnik / COMP 272-002          //
 ////////////////////////////////////////////
 
 

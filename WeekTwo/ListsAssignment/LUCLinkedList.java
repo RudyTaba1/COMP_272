@@ -1,7 +1,7 @@
 package WeekTwo.ListsAssignment;
 
 ////////////////////////////////////////////
-// ADD YOUR NAME / SECTION NUMBER HERE    //
+// Rudy Tabachnik / COMP 272-002          //
 ////////////////////////////////////////////
 
 
