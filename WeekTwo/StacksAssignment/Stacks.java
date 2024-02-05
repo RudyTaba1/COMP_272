@@ -69,18 +69,18 @@ public class Stacks {
       }    
       
       public static int findLargestK(Stack<Integer> stack, int k) {
+        // if user feeds bad data, return -1        
         int largestK = -1;
-    
-        if(stack.isEmpty()||k<0||k>=stack.size()){
-          return largestK;
+                //loops through the stack
+                for(int i = 0; i < stack.size(); i++){
+                    //if the value at stack[i]==k, then the largestK is set to i
+                    //it would loop to the end ofthe stack, where stack[i]==k. therefore, i is the largest k (4)
+                    //all this loop does is search where k and i are equal, and if they're not, it returns -1 
+                    if(stack.get(i) == k){
+                        largestK = i;
+                    }
+                }
+                return largestK;
+        
+            }
         }
-    
-        for(int i = k; i < stack.size(); i++){
-            if(stack.get(i) > largestK){
-                largestK = stack.get(i);
-       
-        }
-        return largestK;
-    
-      }
-}
