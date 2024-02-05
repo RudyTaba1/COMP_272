@@ -1,4 +1,8 @@
 #mass files to ignore
 *.class*
 *.txt*
+
+#folders to ignore
+/lib/*
 #will add more individual files later
+
