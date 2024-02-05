@@ -69,6 +69,12 @@ public class LUCLinkedList {
      */
   
     public void removeElementsLT(int ltValue) {
+     Node currNode = this.head;
+        while (currNode != null && currNode.data < ltValue) {
+            this.head = currNode.next;
+            currNode = this.head;
+        }
+
 
         // YOUR CODE GOES HERE, DO NOT FORGET TO ADD YOUR 
         // NAME AND SECTION NUMBER AT TOP OF THIS FILE
