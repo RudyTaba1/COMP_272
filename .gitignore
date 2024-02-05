@@ -1,7 +1,7 @@
 #mass files to ignore
 *.class*
 *.txt*
-
+Lecture.java
 #folders to ignore
 /lib/*
 #will add more individual files later
