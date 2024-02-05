@@ -24,10 +24,29 @@ public class Stacks {
      */
     public static boolean isPalindrome(String winput) {
         
-        //Stack<String> checkPali = new Stack<String>();
-        //boolean isPalindrome = checkPali.isEmpty();
+        Stack<Character> checkPali = new Stack<>();
+        boolean isPalindrome = checkPali.isEmpty();
+        winput = winput.toLowerCase().replaceAll(" ", "");
 
-        boolean isPalindrome = false;
+        //pushes the first half of the string onto the stack to account for odd length strings
+        for(int i = 0; i < (winput.length()/2); i++){
+            checkPali.push(winput.charAt(i));
+        }
+
+        //accounts for odd length strings by starting the index at the middle of the string
+        int startIndex = (winput.length()/2) + (winput.length()%2);
+        
+
+        for(int i = startIndex; i < winput.length(); i++){
+            
+            //in other words, if checkPali[i-1] == winput[i], then it is a palindrome (which is true)
+            if(checkPali.pop() == winput.charAt(i)){
+                isPalindrome = true;
+            }
+        }
+
+
+/*      boolean isPalindrome = false;
         
         winput = winput.toLowerCase().replaceAll(" ", "");
         String reverse = "";
@@ -38,7 +57,8 @@ public class Stacks {
             if(winput.equals(reverse)){
                 isPalindrome = true;
             }   
-        // YOR CODE CODE HERE, *USE* A STACK IMPLEMENTATION
+*/
+            // YOR CODE CODE HERE, *USE* A STACK IMPLEMENTATION
   
         return isPalindrome;
     }

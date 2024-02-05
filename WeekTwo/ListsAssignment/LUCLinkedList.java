@@ -69,10 +69,13 @@ public class LUCLinkedList {
      */
   
     public void removeElementsLT(int ltValue) {
-     Node currNode = this.head;
+     //sets current node to the head of the list
+        Node currNode = this.head;
+        //checks if the current node is less than the value and if the node exists
         while (currNode != null && currNode.data < ltValue) {
+            //sets the current node to the next node
             this.head = currNode.next;
-            
+            //then sets the current node to the head of the list
             currNode = this.head;
         }
 
