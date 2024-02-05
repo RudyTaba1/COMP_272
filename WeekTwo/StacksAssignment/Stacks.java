@@ -23,52 +23,64 @@ public class Stacks {
      * @return isPalindrome - true if the input string is a palindrome, false otherwise.
      */
     public static boolean isPalindrome(String winput) {
+        boolean isPalindrome = true;
+        
+        while(winput == null || winput.isEmpty()){
+          return isPalindrome;
+        }
         
         Stack<Character> checkPali = new Stack<>();
-        boolean isPalindrome = checkPali.isEmpty();
-        winput = winput.toLowerCase().replaceAll(" ", "");
-
+        
+        winput = winput.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+    
         //pushes the first half of the string onto the stack to account for odd length strings
         for(int i = 0; i < (winput.length()/2); i++){
             checkPali.push(winput.charAt(i));
         }
-
-        //accounts for odd length strings by starting the index at the middle of the string
-        int startIndex = (winput.length()/2) + (winput.length()%2);
+    
         
-
+        //accounts for odd length strings by starting the index at the middle of the string
+        int startIndex = (winput.length()/2) + (winput.length() % 2);
+    
+    
         for(int i = startIndex; i < winput.length(); i++){
-            
-            //in other words, if checkPali[i-1] == winput[i], then it is a palindrome (which is true)
-            if(checkPali.pop() == winput.charAt(i)){
-                isPalindrome = true;
+            if(checkPali.isEmpty() || checkPali.pop() != winput.charAt(i)){
+                isPalindrome = false;
+                break;
             }
         }
-
-
-/*      boolean isPalindrome = false;
-        
+    
+    
+      /*      boolean isPalindrome = false;
+    
         winput = winput.toLowerCase().replaceAll(" ", "");
         String reverse = "";
-
+    
         for(int i = winput.length() - 1; i >= 0; i--){
             reverse += winput.charAt(i);
         }
             if(winput.equals(reverse)){
                 isPalindrome = true;
             }   
-*/
+      */
             // YOR CODE CODE HERE, *USE* A STACK IMPLEMENTATION
-  
+    
         return isPalindrome;
-    }
-
-    public static int findLargestK(Stack<Integer> stack, int k) {
-
-        // YOUR CODE GOES HERE, DO NOT FORGET TO ADD YOUR 
-        // NAME AND SECTION NUMBER AT TOP OF THIS FILE
+      }    
       
-        return -1;
-
-    }
+      public static int findLargestK(Stack<Integer> stack, int k) {
+        int largestK = -1;
+    
+        if(stack.isEmpty()||k<0||k>=stack.size()){
+          return largestK;
+        }
+    
+        for(int i = k; i < stack.size(); i++){
+            if(stack.get(i) > largestK){
+                largestK = stack.get(i);
+       
+        }
+        return largestK;
+    
+      }
 }

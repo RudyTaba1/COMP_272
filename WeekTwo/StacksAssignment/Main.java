@@ -11,10 +11,10 @@ class Main {
    */
   
   public static void main(String[] args) {
-    String testString = "Race Car";
+    String testString = "1232";
     System.out.println(Stacks.isPalindrome(testString));
 
-    /*Stack<Integer> myStack = new Stack<>();
+    Stack<Integer> myStack = new Stack<>();
     myStack.push(5);
     myStack.push(3);
     myStack.push(1);
@@ -22,6 +22,6 @@ class Main {
     myStack.push(1);
 
     System.out.println(myStack);
-    System.out.println(Stacks.findLargestK(myStack, 1));*/
+    System.out.println(Stacks.findLargestK(myStack, 1));
   }
 }
