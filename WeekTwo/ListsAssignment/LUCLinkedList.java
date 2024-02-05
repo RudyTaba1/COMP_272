@@ -72,6 +72,7 @@ public class LUCLinkedList {
      Node currNode = this.head;
         while (currNode != null && currNode.data < ltValue) {
             this.head = currNode.next;
+            
             currNode = this.head;
         }
 
