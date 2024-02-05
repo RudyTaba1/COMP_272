@@ -1,4 +1,5 @@
 package WeekTwo.StacksAssignment;
+import java.util.Stack;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -24,4 +25,20 @@ public class StacksTest {
         assertTrue(Stacks.isPalindrome("1234321"));
         assertFalse(Stacks.isPalindrome("123456"));
     }
+
+    @Test
+    public void testFindLargestK() {
+        Stack<Integer> myStack = new Stack<>();
+        myStack.push(5);
+        myStack.push(3);
+        myStack.push(1);
+        myStack.push(4);
+        myStack.push(1);
+        assertEquals(4, Stacks.findLargestK(myStack, 1));
+        assertEquals(-1, Stacks.findLargestK(myStack, 2));
+        assertEquals(1, Stacks.findLargestK(myStack, 3));
+        assertEquals(3, Stacks.findLargestK(myStack, 4));
+        assertEquals(0, Stacks.findLargestK(myStack, 5));
+    }
+
 }
