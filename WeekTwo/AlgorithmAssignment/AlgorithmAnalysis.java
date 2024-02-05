@@ -1,4 +1,4 @@
-package WeekTwo.AlgorithmAssignment;
+package AlgorithmAssignment;
 
 public class AlgorithmAnalysis {
 

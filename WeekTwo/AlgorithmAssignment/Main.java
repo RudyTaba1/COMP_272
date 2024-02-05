@@ -1,4 +1,4 @@
-package WeekTwo.AlgorithmAssignment;
+package AlgorithmAssignment;
 
 class Main{
     public static void main(String[] args) {

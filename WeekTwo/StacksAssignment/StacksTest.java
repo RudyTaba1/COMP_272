@@ -1,4 +1,4 @@
-package WeekTwo.StacksAssignment;
+package StacksAssignment;
 import java.util.Stack;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package WeekTwo.ListsAssignment;
+package ListsAssignment;
 
 ////////////////////////////////////////////
 // Rudy Tabachnik / COMP 272-002          //

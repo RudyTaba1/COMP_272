@@ -1,4 +1,4 @@
-package WeekTwo.ListsAssignment;
+package ListsAssignment;
 
 class Main {
 
