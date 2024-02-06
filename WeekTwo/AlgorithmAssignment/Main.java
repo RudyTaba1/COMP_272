@@ -1,7 +1,7 @@
 package AlgorithmAssignment;
 
-class Main{
-    public static void main(String[] args) {
+class Main {
+  public static void main(String[] args) {
     int n = 10;         // Change n to any positive integer
     int result;
 
@@ -21,16 +21,16 @@ class Main{
      */ 
 
     System.out.println("\nAlgorithmOne Analysis:");
-    System.out.println("Math equation is: <place-equation-here>"); 
-    System.out.println("Big-Oh is       : O(<place-here>)");
-    System.out.println("Big-Omega is    : Ω(<place-here>)");
-    System.out.println("Big-Theta is    : θ(<place-here>)");
+    System.out.println("Math equation is: n+1"); 
+    System.out.println("Big-Oh is       : O(n)");
+    System.out.println("Big-Omega is    : Ω(n)");
+    System.out.println("Big-Theta is    : θ(n)");
 
     System.out.println("\nAlgorithmTwo Analysis:");
-    System.out.println("Math equation is: <place-equation-here>"); 
-    System.out.println("Big-Oh is       : O(<place-here>)");
-    System.out.println("Big-Omega is    : Ω(<place-here>)");
-    System.out.println("Big-Theta is    : θ(<place-here>)");
+    System.out.println("Math equation is: n^2+1"); 
+    System.out.println("Big-Oh is       : O(n^2)");
+    System.out.println("Big-Omega is    : Ω(n^2)");
+    System.out.println("Big-Theta is    : θ(n^2)");
   }
- 
+
 }
