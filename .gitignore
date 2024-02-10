@@ -1,9 +1,13 @@
 #mass files to ignore
 *.class*
 *.txt*
+
+#individual files
 Lecture.java
 HelpJ.java
+BadNews.java
+
 #folders to ignore
 /lib/*
-#will add more individual files later
+
 
