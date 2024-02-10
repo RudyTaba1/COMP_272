@@ -2,6 +2,7 @@
 *.class*
 *.txt*
 Lecture.java
+HelpJ.java
 #folders to ignore
 /lib/*
 #will add more individual files later
