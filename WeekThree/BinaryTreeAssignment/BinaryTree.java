@@ -1,7 +1,7 @@
 package WeekThree.BinaryTreeAssignment;
 
 ////////////////////////////////////////////
-// ADD YOUR NAME / SECTION NUMBER HERE    //
+// rtabachnik / COMP 272-002              //
 ////////////////////////////////////////////
 
 
@@ -117,9 +117,21 @@ public class BinaryTree {
    *
    ***********************************************************/
    
+   /**
+    * Helper method for preOrder
+    * @param n - Node
+    * @return recursively returns the preOrder traversal of the tree
+    */
+   
+   private String preOrderHelper(Node n) {
+        if (n == null) {
+            return "";
+        }
+        return n.data + " " + preOrderHelper(n.left) + preOrderHelper(n.right);
+    }
   
     public String preOrder() {
-        return "<pre-order-list-of-nodes>";
+        return preOrderHelper(root);
     }
 
 
