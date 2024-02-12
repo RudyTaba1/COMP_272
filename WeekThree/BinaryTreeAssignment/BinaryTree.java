@@ -133,10 +133,25 @@ public class BinaryTree {
     public String preOrder() {
         return preOrderHelper(root);
     }
-
+  
+  /**
+   * Helper method for findMin
+   * @param n- root
+   * @return recursively returns the minimum value in the tree
+   */
+    private int findMinHelper(Node n){
+    //if node is empty, return it's max value (0)
+        if(n == null){
+      return Integer.MAX_VALUE;
+    //recursevly find the minimum value by searching the left and right tree.
+    //uses Math.min because it's easier than trying to build a conditional statement
+    } else{
+        return Math.min(n.data, Math.min(findMinHelper(n.left), findMinHelper(n.right)));
+    }
+  }
 
     public int findMin() {
-        return Integer.MAX_VALUE;
+        return findMinHelper(root);
     }
         
 
