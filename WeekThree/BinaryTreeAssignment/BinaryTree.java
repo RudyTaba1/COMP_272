@@ -154,10 +154,32 @@ public class BinaryTree {
         return findMinHelper(root);
     }
         
-
+    
+    private int NodesGTHelper(Node n, int val){
+        //if the tree is empty, return 0
+        if(n == null){
+            return 0;
+        }
+        //if the value of the node is greater than the value, return 1 + the sum of the left and right tree
+        if(n.data > val){
+            return 1 + NodesGTHelper(n.left, val) + NodesGTHelper(n.right, val);
+        }
+        //if the value of the node is less than the value, return the sum of the left and right tree
+        else if(n.data < val){
+            return NodesGTHelper(n.left, val) + NodesGTHelper(n.right, val);
+        }
+        //if the value of the node is equal to the value, return the sum of the left and right tree
+        else{
+            return NodesGTHelper(n.left, val) + NodesGTHelper(n.right, val);
+        }
+    }   
+    /**
+     * returns the number of nodes that are greater than @param val.
+     * @return gtsum.
+     */
     public int NodesGT(int val) {
-    	return 0;
-    }
+        return NodesGTHelper(root, val);
+        }
 
     
     public double average() {
