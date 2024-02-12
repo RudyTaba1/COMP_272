@@ -49,6 +49,7 @@ public class BinaryTree {
     }
 
     public  Node root;
+    private  int size;
 
     public  void deleteTree()                 { root = null; }
     public  Node insert(int data)             { return insert(root, data); }
@@ -64,7 +65,8 @@ public class BinaryTree {
 
         // Empty tree scenario; create it's first node. 
         if ( root == null ) {
-            return root = new Node(value, null, null);
+            this.size++;
+            return root = new Node(value, null, null);     
         }
 
         // If 'node' is null, we found the location to insert the new node, 
@@ -78,7 +80,7 @@ public class BinaryTree {
         else if (value < node.data) {
             node.left = insert(node.left, value);    // recursively travser left
         }
-      
+        
         return node;
   }
 
@@ -154,7 +156,12 @@ public class BinaryTree {
         return findMinHelper(root);
     }
         
-    
+    /**
+     * Helper method for NodesGT 
+     * @param n - root
+     * @param val - value that we're looking to be greater than
+     * @return amount of children that greater than @param val.
+     */
     private int NodesGTHelper(Node n, int val){
         //if the tree is empty, return 0
         if(n == null){
@@ -174,21 +181,38 @@ public class BinaryTree {
         }
     }   
     /**
-     * returns the number of nodes that are greater than @param val.
+     * returns the number of nodes that are greater than @param val recursively.
      * @return gtsum.
      */
     public int NodesGT(int val) {
         return NodesGTHelper(root, val);
         }
-
+/**
+ * Helper method to find the average of the binary tree
+ * @param n
+ * @return avg
+ */
+    private int averageHelper(Node n){
+        //if the tree is empty, return 0
+        if(n == null){
+            return 0;
+        }
+        //return the average of all the data in the tree
+        return (n.data + averageHelper(n.left) + averageHelper(n.right));
+       
     
+    }
     public double average() {
-        return (double) 0.0;
+        return (double) averageHelper(root);
     }
 
 
     public int balanceHeight() {
         return -1;
+    }
+
+    public int giveData(){
+        return root.data;
     }
 
 }
