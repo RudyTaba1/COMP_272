@@ -193,12 +193,14 @@ public class BinaryTree {
         return NodesGTHelper(root, val);
         }//method NodesGT()
 
-    /**
-     * Helper method to find the size of the binary tree
-     * @param n - root
-     * @return size of BinaryTree
-     */
-    private int getSize(Node n){
+   
+   
+/**
+ * Helper method to find the size of the binary tree
+ * @param n - root
+ * @return size of BinaryTree
+ */
+private int getSize(Node n){
         if(n == null){
             return 0;
         }
