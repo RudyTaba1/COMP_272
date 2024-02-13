@@ -204,7 +204,7 @@ public class BinaryTree {
 
    
     /**
- * Helper method to find the height(size) of the binary tree
+ * Helper method to find the size of the binary tree
  * @param n - root
  * @return height of BinaryTree
  */
@@ -212,7 +212,7 @@ public class BinaryTree {
         if(n == null){
             return 0;
         }
-        return 1 + Math.max(getSize(n.left), getSize(n.right));
+        return 1 + getSize(n.left) + getSize(n.right);
     }//method getSize()
 
 
@@ -250,24 +250,34 @@ public class BinaryTree {
  * @param n - root.
  * @return balanced or notBalanced.
  */
-    private boolean isBalanced(Node n){
-        //a lot easier on the eyes than true or false
-        boolean balanced = true;
-        boolean notBalanced = false;
-        
-        //if the tree is empty, return true
-        if(n == null){
-            return balanced;
-        }
-        //if the left and right tree are balanced, return true
-        if(isBalanced(n.left) && isBalanced(n.right)){
-            //if the difference between the left and right tree is less than 2, return true
-            if(Math.abs(getSize(n.left) - getSize(n.right)) < 2){
-                return balanced;
-            }
-        }
+private boolean isBalanced(Node n){
+    //a lot easier on the eyes than true or false
+    boolean balanced = true;
+    boolean notBalanced = false;
+    
+    //if the tree is empty, return true
+    if(n == null){
+        return balanced;
+    }
+    if(Math.abs(height(n.left) - height(n.right)) > 1){
         return notBalanced;
-    }//method isBalanced()
+    }
+
+    return isBalanced(n.left) && isBalanced(n.right);
+}//method isBalanced()
+   
+    
+    /**
+     * Helper method to find the height of the binary tree
+     * @param n - root
+     * @return height of BinaryTree
+     */
+   private int height(Node n){
+        if(n == null){
+            return 0;
+        }
+        return 1 + Math.max(height(n.left), height(n.right));
+    }//method height()
     
     
     /**
@@ -278,7 +288,7 @@ public class BinaryTree {
     public int balanceHeight() {
         int fail = -1;
         if(isBalanced(root)){
-            return getSize(root);
+            return height(root);
         }
         return fail;
     }//method balanceHeight()
