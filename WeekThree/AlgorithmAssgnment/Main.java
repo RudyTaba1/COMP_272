@@ -1,7 +1,7 @@
 package WeekThree.AlgorithmAssgnment;
 
 ////////////////////////////////////////////
-// ADD YOUR NAME / SECTION NUMBER HERE    //
+// rtabachnik / COMP272-002               //
 ////////////////////////////////////////////
 
 import java.util.Arrays;
@@ -24,9 +24,9 @@ public class Main {
      */ 
 
     System.out.println("\nAlgorithmThree Analysis:");
-    System.out.println("Big-Oh is             : O(<place-here>)");
-    System.out.println("Big-Omega is          : Ω(<place-here>)");
-    System.out.println("Does Big-Theta exist? : <place-'Yes'-or-'No'-here> ");
+    System.out.println("Big-Oh is             : O(nlogn)");
+    System.out.println("Big-Omega is          : Ω(nlogn)");
+    System.out.println("Does Big-Theta exist? : <No> ");
 
   }
 }
