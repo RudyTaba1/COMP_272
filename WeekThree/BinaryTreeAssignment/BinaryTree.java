@@ -121,24 +121,28 @@ public class BinaryTree {
    *
    ***********************************************************/
    
-   /**
+    /**
     * Helper method for preOrder
     * @param n - Node
     * @return recursively returns the preOrder traversal of the tree
     */
-   
-   private String preOrderHelper(Node n) {
+    private String preOrderHelper(Node n) {
         if (n == null) {
             return "";
         }
         return n.data + " " + preOrderHelper(n.left) + preOrderHelper(n.right);
     }
-  
+ 
+
+    /**
+   * @return recursively returns the preOrder traversal of the tree
+   */
     public String preOrder() {
         return preOrderHelper(root);
-    }
+    }//method preOrder()
   
-  /**
+
+    /**
    * Helper method for findMin
    * @param n- root
    * @return recursively returns the minimum value in the tree
@@ -154,11 +158,16 @@ public class BinaryTree {
     }
   }//method findMinHelper()
 
-   
-  public int findMin() {
+
+    /**
+    * returns the minimum value in the tree
+    * @return recursively returns the minimum value in the tree
+    */
+    public int findMin() {
         return findMinHelper(root);
     }//method findMin()
         
+
     /**
      * Helper method for NodesGT 
      * @param n - root
@@ -194,21 +203,20 @@ public class BinaryTree {
         }//method NodesGT()
 
    
-   
-/**
- * Helper method to find the size of the binary tree
+    /**
+ * Helper method to find the height(size) of the binary tree
  * @param n - root
- * @return size of BinaryTree
+ * @return height of BinaryTree
  */
-private int getSize(Node n){
+    private int getSize(Node n){
         if(n == null){
             return 0;
         }
-        return 1 + getSize(n.left) + getSize(n.right);
+        return 1 + Math.max(getSize(n.left), getSize(n.right));
     }//method getSize()
 
 
-/**
+    /**
  * Helper method to find the total of the binary tree
  * @param n
  * @return total of the binary tree
@@ -222,16 +230,56 @@ private int getSize(Node n){
         int total = n.data + averageHelper(n.left) + averageHelper(n.right);
         
         return total;
-    }
+    }//method averageHelper()
     
 
+    /**
+ * returns the average of the binary tree
+ * @return avg
+ */
     public double average() {
+        //I tried to calculate the average by using the getSize method, but it didn't work
         double size = getSize(root);
         return (double) averageHelper(root) / size;
     }
 
 
+    /**
+ * Helper method to check if the tree is balanced. The boolean does most of the work.
+ * If it comes back balanced, then will return the size of the tree in the accessor method.
+ * @param n - root.
+ * @return balanced or notBalanced.
+ */
+    private boolean isBalanced(Node n){
+        //a lot easier on the eyes than true or false
+        boolean balanced = true;
+        boolean notBalanced = false;
+        
+        //if the tree is empty, return true
+        if(n == null){
+            return balanced;
+        }
+        //if the left and right tree are balanced, return true
+        if(isBalanced(n.left) && isBalanced(n.right)){
+            //if the difference between the left and right tree is less than 2, return true
+            if(Math.abs(getSize(n.left) - getSize(n.right)) < 2){
+                return balanced;
+            }
+        }
+        return notBalanced;
+    }//method isBalanced()
+    
+    
+    /**
+     * accessor for isBalanced method.
+     * if the tree is balanced, @return the size of the tree.
+     * if not, @return -1.
+     */
     public int balanceHeight() {
-        return -1;
-    }
+        int fail = -1;
+        if(isBalanced(root)){
+            return getSize(root);
+        }
+        return fail;
+    }//method balanceHeight()
 }
