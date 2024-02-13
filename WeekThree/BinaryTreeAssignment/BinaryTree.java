@@ -49,7 +49,7 @@ public class BinaryTree {
     }
 
     public  Node root;
-    private  int size;
+    
 
     public  void deleteTree()                 { root = null; }
     public  Node insert(int data)             { return insert(root, data); }
@@ -62,10 +62,10 @@ public class BinaryTree {
      */
   
     private Node insert(Node node, int value) {
-
+        
         // Empty tree scenario; create it's first node. 
         if ( root == null ) {
-            this.size++;
+            
             return root = new Node(value, null, null);     
         }
 
@@ -76,9 +76,11 @@ public class BinaryTree {
             node = new Node(value, null, null);
         } else  if (value > node.data) {
             node.right = insert(node.right, value);  // recursively traverse right
+            
         }
         else if (value < node.data) {
             node.left = insert(node.left, value);    // recursively travser left
+            
         }
         
         return node;
@@ -150,11 +152,12 @@ public class BinaryTree {
     } else{
         return Math.min(n.data, Math.min(findMinHelper(n.left), findMinHelper(n.right)));
     }
-  }
+  }//method findMinHelper()
 
-    public int findMin() {
+   
+  public int findMin() {
         return findMinHelper(root);
-    }
+    }//method findMin()
         
     /**
      * Helper method for NodesGT 
@@ -179,18 +182,34 @@ public class BinaryTree {
         else{
             return NodesGTHelper(n.left, val) + NodesGTHelper(n.right, val);
         }
-    }   
+    }//method NodeGTHelper()
+    
+    
     /**
      * returns the number of nodes that are greater than @param val recursively.
      * @return gtsum.
      */
     public int NodesGT(int val) {
         return NodesGTHelper(root, val);
+        }//method NodesGT()
+
+    /**
+     * Helper method to find the size of the binary tree
+     * @param n - root
+     * @return size of BinaryTree
+     */
+    private int getSize(Node n){
+        if(n == null){
+            return 0;
         }
+        return 1 + getSize(n.left) + getSize(n.right);
+    }//method getSize()
+
+
 /**
- * Helper method to find the average of the binary tree
+ * Helper method to find the total of the binary tree
  * @param n
- * @return avg
+ * @return total of the binary tree
  */
     private int averageHelper(Node n){
         //if the tree is empty, return 0
@@ -198,21 +217,19 @@ public class BinaryTree {
             return 0;
         }
         //return the average of all the data in the tree
-        return (n.data + averageHelper(n.left) + averageHelper(n.right));
-       
-    
+        int total = n.data + averageHelper(n.left) + averageHelper(n.right);
+        
+        return total;
     }
+    
+
     public double average() {
-        return (double) averageHelper(root);
+        double size = getSize(root);
+        return (double) averageHelper(root) / size;
     }
 
 
     public int balanceHeight() {
         return -1;
     }
-
-    public int giveData(){
-        return root.data;
-    }
-
 }
