@@ -340,6 +340,18 @@ class LUC_AVLTree {
          * RLRotation. To understand what each of these methods do, look at
          * the comment prologues and code for each.
          */
+        if(node == null){
+            return node;
+        }
+        if(value < node.value){
+            node.leftChild = deleteElement(value, node.leftChild);
+        
+        }else if(value > node.value)
+        {
+            node.rightChild = deleteElement(value, node.rightChild);
+        }
+
+
       
     
 
