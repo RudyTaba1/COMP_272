@@ -330,32 +330,74 @@ class LUC_AVLTree {
      */
 
     private Node deleteElement(int value, Node node) {
+        if (node == null) {return node;}
 
-        /*
-         * ADD CODE HERE
-         * 
-         * NOTE, that you should use the existing coded private methods
-         * in this file, which include minValueNode, getMaxHeight, 
-         * getHeight, getBalanceFactor, LLRotation RRRotation, LRRotation, 
-         * RLRotation. To understand what each of these methods do, look at
-         * the comment prologues and code for each.
-         */
-        if(node == null){
-            return node;
-        }
-        if(value < node.value){
+        // If the value to delete is less than the current node's value, then 
+        // we are deleting from the LEFT of this node, else we are deleting 
+        // from the RIGHT of it.
+        if (value < node.value) {
             node.leftChild = deleteElement(value, node.leftChild);
-        
-        }else if(value > node.value)
-        {
+        } else if (value > node.value) {
             node.rightChild = deleteElement(value, node.rightChild);
+        } else {
+            // This is the node to delete, it is a leaf node
+            if ((node.leftChild == null) || (node.rightChild == null)) {
+                Node temp = null;
+                if (temp == node.leftChild)
+                    temp = node.rightChild;
+                else
+                    temp = node.leftChild;
+
+                // No child case
+                if (temp == null) {
+                    temp = node;
+                    node = null;
+                } else
+                    node = temp; // One child case
+            } else {
+                // Node with two children: Get the inorder successor (smallest
+                // in the right subtree)
+                Node temp = minValueNode(node.rightChild);
+
+                // Copy the inorder successor's data to this node
+                node.value = temp.value;
+
+                // Delete the inorder successor
+                node.rightChild = deleteElement(temp.value, node.rightChild);
+            }
         }
 
+        // If the tree had only one node then return
+        if (node == null)
+            return node;
 
-      
-    
+        // Re-calculate the node's height
+        node.height = getMaxHeight(getHeight(node.leftChild), getHeight(node.rightChild)) + 1;
 
-        return null;
+        // Get the balance factor of this node (to check if this node became unbalanced)
+        int bf = getBalanceFactor(node);
+
+        // If this node becomes unbalanced, then there are 4 cases
+        // Left Left Case
+        if (bf > 1 && getBalanceFactor(node.leftChild) >= 0)
+            return LLRotation(node);
+
+        // Left Right Case
+        if (bf > 1 && getBalanceFactor(node.leftChild) < 0) {
+            node.leftChild = RRRotation(node.leftChild);
+            return LLRotation(node);
+        }
+
+        // Right Right Case
+        if (bf < -1 && getBalanceFactor(node.rightChild) <= 0)
+            return RRRotation(node);
+
+        // Right Left Case
+        if (bf < -1 && getBalanceFactor(node.rightChild) > 0) {
+            node.rightChild = LLRotation(node.rightChild);
+            return RRRotation(node);
+        }
+        return node;
     }
 
 
