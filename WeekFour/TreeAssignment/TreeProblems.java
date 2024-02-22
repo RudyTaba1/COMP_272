@@ -21,10 +21,21 @@ public class TreeProblems {
     // TreeSets and using the methods retainAll(), addAll(), and removeAll(). 
     // But in the end, get something to work. 
 
-    Set<Integer> tmp = new TreeSet<>(setA);
-    
-    return tmp;
+    //create a new TreeSet to store the result
+TreeSet<Integer> result = new TreeSet<>(setA);
+      //add all elements from setB to result
+      result.addAll(setB);
+        //create a new TreeSet to store the intersection of setA and setB
+        TreeSet<Integer> intersection = new TreeSet<>(setA);
+        //retain only the elements that are in both setA and setB
+        intersection.retainAll(setB);
+        //remove all elements that are in the intersection from the result
+        result.removeAll(intersection);
+
+        return result;
   }
+
+  
 
 
   /*
@@ -39,9 +50,13 @@ public class TreeProblems {
     // INSERT CODE HERE. The simpliest way to create a TreeMap iterator object
     // and loop through the map removing even numbers. This approach will only
     // use several lines of code. 
+    Iterator<Integer> it = treeMap.keySet().iterator();
+    while (it.hasNext()) {
+      if (it.next() % 2 == 0) {
+        it.remove();
+      }
+    }
 
-
-    return;
   }
 
 }
