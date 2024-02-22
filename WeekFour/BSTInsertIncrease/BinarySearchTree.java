@@ -31,8 +31,9 @@ public class BinarySearchTree {
     
       // INSERT CODE HERE - THIS METHOD SHOULD USE THE 
       // INSERT METHOD BELOW.
-
-      return;
+      for (int i = 0; i < data.length; i++) {
+        insert(data[i]);
+      }
   }
 
 
@@ -50,12 +51,29 @@ public class BinarySearchTree {
    */
   
   public void insert(int data) {
-    
       // INSERT CODE HERE 
+      if (root == null) {
+        root = new Node(data);
+      } else {
+        insertHelper(root, data);
+      }
+    }
 
-      return;
-  }
-
+  private void insertHelper(Node node, int data) {
+    if (data < node.data) {
+      if (node.left == null) {
+        node.left = new Node(data);
+      } else {
+        insertHelper(node.left, data);
+      }
+    } else {
+      if (node.right == null) {
+        node.right = new Node(data);
+      } else {
+        insertHelper(node.right, data);
+      }
+    }
+}
 
   
   /**
@@ -71,9 +89,16 @@ public class BinarySearchTree {
   public void increaseAll(int value) {
 
     // INSERT CODE HERE
-  
-  
-    return;
+    increaseHelper(root, value);
+  }
+
+  private void increaseHelper(Node node, int value) {
+    if (node == null) {
+      return;
+    }
+    node.data += value;
+    increaseHelper(node.left, value);
+    increaseHelper(node.right, value);
   }
 
   
