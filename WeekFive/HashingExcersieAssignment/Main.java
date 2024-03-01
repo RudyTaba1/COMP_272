@@ -1,4 +1,4 @@
-package WeekFive.HashingExcersieAssignment;
+package HashingExcersieAssignment;
 
 /*
  * Your Unit Testing goes here

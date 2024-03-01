@@ -1,4 +1,4 @@
-package WeekFive.LevelTreeTraverseAssignment;
+package LevelTreeTraverseAssignment;
 
 /*
  * Place your unit testing here. All developers shoudl

@@ -1,4 +1,4 @@
-package WeekFive.LevelTreeTraverseAssignment;
+package LevelTreeTraverseAssignment;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
