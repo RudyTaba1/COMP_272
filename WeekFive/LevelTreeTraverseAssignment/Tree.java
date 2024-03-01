@@ -78,16 +78,30 @@ public class Tree {
    */
 
   public String traverseByLevel() {
-      String result = "";
+    StringBuilder result = new StringBuilder();
 
+    // If the tree is empty, return an empty string
+    if (root == null) {
+        return result.toString();
+    }
 
-      /*
-       * YOUR CODE GOES HERE - DO NOT FORGET TO
-       * ADD YOUR NAME / SECTION ABOVE
-       */
+    // Create a queue to store the nodes
+    Queue<Node> queue = new LinkedList<>();
+    // Add the root node to the queue
+    queue.add(root);
 
-      // Return the result after trimming any trailing spaces
-      return result.trim();
-  }
+    while (!queue.isEmpty()) {
+        Node current = queue.poll();
+        result.append(current.data).append(" ");
+
+        // Add all children of the current node to the queue
+        for (Node child : current.getChildren()) {
+            queue.add(child);
+        }
+    }
+
+    // Return the result after trimming any trailing spaces
+    return result.toString().trim();
+}
 }
 
