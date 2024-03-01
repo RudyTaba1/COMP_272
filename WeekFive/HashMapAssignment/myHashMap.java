@@ -462,14 +462,15 @@ class myHashMap<K,V> {
      */
 
     public boolean replace(K key, V oldVal, V newVal) {
-
-        // 
-        // YOUR CODE GOES HERE
-        // 
-        // DO NOT FORGET TO PLACE YOUR NAME / SECTION ABOVE
-        //
+        boolean replaced = false;
+        //if the old value exists and the key is in the hashmap, replace the value
+        //return true if the value was replaced
+        if(this.containsKey(key) && this.get(key).equals(oldVal)){
+            this.put(key, newVal);
+            replaced = true;
+        }
       
-        return false;
+        return replaced;
     }
 
 
@@ -486,13 +487,20 @@ class myHashMap<K,V> {
      */
 
     public boolean containsValue(V val) {
+        boolean contains = false;
+        //checks each bucket for the value
+        for (HashNode<K, V> headNode : bucket) {
+            while (headNode != null) {
+                //if it exists, return true
+                if (headNode.value.equals(val)) {
+                    contains = true;
+                }
+                headNode = headNode.next;
+            }
+        }
 
 
-        //
-        // YOUR CODE GOES HERE
-        //
-
-        return false;
+        return contains;
     }
 
 
@@ -509,12 +517,17 @@ class myHashMap<K,V> {
      */
 
     public boolean containsKey (K key)  {
-
-        // 
-        // YOUR CODE GOES HERE ....
-        // 
+        boolean containsKey = false;
+        for(HashNode<K, V> headNode : bucket){
+            while(headNode != null){
+                if(headNode.key.equals(key)){
+                    containsKey = true;
+                }
+                headNode = headNode.next;
+            }
+        }
       
-        return false;
+        return containsKey;
     }
 
 
