@@ -1,4 +1,4 @@
-package CuckooHashAssignment;
+package CukooHashAssignment;
 
 import java.util.ArrayList;
 import java.util.HashSet;
