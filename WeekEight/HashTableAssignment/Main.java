@@ -3,6 +3,8 @@ package HashTableAssignment;
 
 import java.util.*;
 
+
+
 /*
  *  Utility Methods Class
  * 
@@ -22,11 +24,21 @@ class UtilMethods {
      */
   
     public boolean isSubset(int list1[], int list2[]) {
-        HashMap<Integer, Integer> hm = new HashMap<Integer,Integer>();
-        // ADD YOUR CODE HERE, DO NOT FORGET TO ADD YOUR
-        // NAME / SECTION NUMBER AT TOP OF FILE
-
-        return false;
+      boolean isSub = true;  
+      HashMap<Integer, Integer> hm = new HashMap<Integer,Integer>();
+      
+      for(int i : list1){
+        hm.put(i, hm.getOrDefault(i, 0) + 1);
+      }
+      
+      for(int i : list2){
+        if(hm.get(i) == null || hm.get(i) == 0 || !hm.containsKey(i)){
+          isSub = false;
+        }
+        
+        hm.put(i, hm.get(i) - 1);
+      }
+        return isSub;
     }
 
 
@@ -35,18 +47,21 @@ class UtilMethods {
     *
     * Given an array A and integer k, return the k-th maximum
     * element in the array.
-    *
     * USE a Priority Queue ADT to solve this problem.
     */
   
    public int findKthLargest(int[] array, int k) {
-      Queue<Integer> pq = new PriorityQueue<>();
+    Queue<Integer> pq = new PriorityQueue<>();
 
-     // ADD YOUR CODE HERE
-
-      return -1;
+    for (int val : array) {
+        pq.add(val);
+        if (pq.size() > k) {
+            pq.poll();
+        }
     }
 
+    return pq.peek();
+}
 
    /*
     * Priority Queue 2 Programming Exercise
