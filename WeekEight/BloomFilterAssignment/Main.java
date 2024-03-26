@@ -208,10 +208,16 @@ class BloomFilter {
      */
 
     public boolean contains(String s) {
-
-        // ADD YOUR CODE HERE -- PLACE YOUR NAME / SECTION AT TOP OF FILE
+        boolean contain = true;
+        for (int n = 0; n < noHashes; n++) {
+        long hc = hashCode(s, n);
+        int bitNo = (int) (hc) & this.hashMask;
+        if (!data.get(bitNo)) {
+            contain = false;
+        }
+    }
  
-        return false;
+        return contain;
     }
 
 
