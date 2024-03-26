@@ -200,12 +200,47 @@ public class CuckooHash<K, V> {
    * @param value the value of the element to add
 	 */
 
- 	public void put(K key, V value) {
+public void put(K key, V value) {
+    int h1 = hash1(key);
+    int h2 = hash2(key);
+    int n = 0; // number of relocations
 
-    // ADD YOUR CODE HERE - PLACE YOUR NAME / SECTION AT TOP OF FILE
+    while (n < this.CAPACITY) {
+        // If the bucket at h1 is empty, insert the key-value pair there
+        if (table[h1] == null) {
+            table[h1] = new Entry<>(key, value);
+            return;
+        }
 
-    return;
-	}
+        // Swap the new key-value pair with the one in the bucket at h1
+        Entry <K, V> temp = table[h1];
+        table[h1] = new Entry<>(key, value);
+        key = temp.key;
+        value = temp.value;
+
+        // If the bucket at h2 is empty, insert the key-value pair there
+        if (table[h2] == null) {
+            table[h2] = new Entry<>(key, value);
+            return;
+        }
+
+        // Swap the new key-value pair with the one in the bucket at h2
+        temp = table[h2];
+        table[h2] = new Entry<>(key, value);
+        key = temp.key;
+        value = temp.value;
+
+        // Update h1 and h2 for the next iteration
+        h1 = hash1(key);
+        h2 = hash2(key);
+
+        n++;
+    }
+
+    // If we've reached this point, the table is full and needs to be resized
+    rehash();
+    put(key, value); // Try to insert the key-value pair again
+}
 
 
 	/**
