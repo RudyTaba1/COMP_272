@@ -73,14 +73,24 @@ class UtilMethods {
     */
   
     public int[] sort2Arrays(int[] array1, int[] array2) {
-      Queue<Integer> pq = new PriorityQueue<>();
-
-      // ADD YOUR CODE HERE
-
-      int dummy[] = {}; // remove this line in your code 
-      return dummy;
-
+    if (array1 == null || array2 == null) {
+        throw new IllegalArgumentException("Input arrays cannot be null");
     }
+
+    Queue<Integer> pq = new PriorityQueue<>();
+    int[] dummy = new int[array1.length + array2.length];
+    for (int val : array1) {
+        pq.add(val);
+    }
+    for (int val : array2) {
+        pq.add(val);
+    }
+    int i = 0;
+    while (!pq.isEmpty()) {
+        dummy[i++] = pq.poll();
+    }
+    return Arrays.copyOf(dummy, i);
+}
 }
 
 
