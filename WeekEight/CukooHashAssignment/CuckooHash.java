@@ -203,31 +203,32 @@ public class CuckooHash<K, V> {
 public void put(K key, V value) {
     int h1 = hash1(key);
     int h2 = hash2(key);
+	
     int n = 0; // number of relocations
 
     while (n < this.CAPACITY) {
         // If the bucket at h1 is empty, insert the key-value pair there
         if (table[h1] == null) {
-            table[h1] = new Entry<>(key, value);
+            table[h1] = new Bucket<>(key, value);
             return;
         }
 
         // Swap the new key-value pair with the one in the bucket at h1
-        Entry <K, V> temp = table[h1];
-        table[h1] = new Entry<>(key, value);
-        key = temp.key;
+        Bucket <K, V> temp = table[h1];
+        table[h1] = new Bucket<>(key, value);
+        key = temp.bucKey;
         value = temp.value;
 
         // If the bucket at h2 is empty, insert the key-value pair there
         if (table[h2] == null) {
-            table[h2] = new Entry<>(key, value);
+            table[h2] = new Bucket<>(key, value);
             return;
         }
 
         // Swap the new key-value pair with the one in the bucket at h2
         temp = table[h2];
-        table[h2] = new Entry<>(key, value);
-        key = temp.key;
+        table[h2] = new Bucket<>(key, value);
+        key = temp.bucKey;
         value = temp.value;
 
         // Update h1 and h2 for the next iteration
