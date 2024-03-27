@@ -34,9 +34,12 @@ class UtilMethods {
       for(int i : list2){
         if(hm.get(i) == null || hm.get(i) == 0 || !hm.containsKey(i)){
           isSub = false;
-        }
+        }else {
+          
+          hm.put(i, hm.get(i) - 1);
         
-        hm.put(i, hm.get(i) - 1);
+        }
+
       }
         return isSub;
     }
